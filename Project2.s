@@ -4,7 +4,7 @@
   emptyInput:   .asciiz "Input is empty."   #Adds string to data
   invalidInput: .asciiz "Invalid base-27 number."   #Adds string to data
   longInput:    .asciiz "Input is too long"   #Adds string to data
-  userInput:    .space  512   #User input representing a space
+  userInput:    .space  8   #reserves space for 8 bytes in memory
 
 .text
 emptyInputError:    
@@ -30,11 +30,4 @@ main:
   la $a0, userInput       #address of input string to read 
   li $a1, 16      #system call to close 
   syscall
-  la $t0, userInput   #load address of user input 
-
-getStringLength:
-  lb $t1, 0($t0)      #loads the byte 
-  beq $t1, $zero, after_get_str_len     #branches if equal
-  addi $t0, $t0, 1      #adds and prints 
-  syscall
-  j getStringLength    #jumps out of getStringLength
+  la $t0, userInput   #load address of user input
