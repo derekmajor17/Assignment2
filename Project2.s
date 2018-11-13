@@ -6,7 +6,13 @@
 
 .text
 emptyInputError:    
-  la $a0, emptyInput    #system call code for printing string
+  la $a0, emptyInput    #system call code for 
+  li $v0, 4   # address of string to print
+  syscall
+  j exit    #jump to exit program
+
+invalidInputError:
+  la $a0, invalidInput #system call code for invalidInput
   li $v0, 4   # address of string to print
   syscall
   j exit    #jump to exit program
