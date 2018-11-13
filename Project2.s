@@ -36,4 +36,5 @@ getStringLength:
   lb $t1, 0($t0)      #loads the byte 
   beq $t1, $zero, after_get_str_len     #branches if equal
   addi $t0, $t0, 1      #adds and prints 
+  syscall
   j getStringLength    #jumps out of getStringLength
