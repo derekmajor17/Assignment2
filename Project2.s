@@ -31,3 +31,9 @@ main:
   li $a1, 16      #system call to close 
   syscall
   la $t0, userInput   #load address of user input 
+
+getStringLength:
+  lb $t1, 0($t0)      #loads the byte 
+  beq $t1, $zero, after_get_str_len     #branches if equal
+  addi $t0, $t0, 1      #adds and prints 
+  j getStringLength    #jumps out of getStringLength
