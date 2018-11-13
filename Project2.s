@@ -1,3 +1,5 @@
+#
+#Project2.S
 .data
   emptyInput:   .asciiz "Input is empty."   #Adds string to data
   invalidInput: .asciiz "Invalid base-27 number."   #Adds string to data
@@ -22,3 +24,10 @@ LongInputError:
   li $v0, 4   # address of string to print
   syscall
   j exit    #jump to exit program
+
+main:
+  li $v0, 8     #system call to read string 
+  la $a0, userInput       #address of input string to read 
+  li $a1, 16      #system call to close 
+  syscall
+  la $t0, userInput   #load address of user input 
