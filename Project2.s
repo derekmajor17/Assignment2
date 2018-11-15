@@ -49,3 +49,9 @@ loop:
      
      li $a1, 10    # load new line char
      beq $a1, $t2, loop  # go to loop start if it's a new line char
+
+     addi $t0, $zero, 38
+     slt $t1, $t0, $t2
+     slti $t4, $t2, 58
+     and $s5, $t1, $t4   # if value is in range 39 to 48, $s5 will have 1
+     addi $s3, $t2, -39   # $value used for calulation later
