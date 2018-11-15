@@ -55,3 +55,12 @@ loop:
      slti $t4, $t2, 58
      and $s5, $t1, $t4   # if value is in range 39 to 48, $s5 will have 1
      addi $s3, $t2, -39   # $value used for calulation later
+
+     li $t7, 1
+     beq $t7, $s5, calculation  # if $s5 already has 1, calculate the char's value from ASCII and skip other checks and branch to calculation
+
+     addi $t0, $zero, 64    #starts at the letter 'A'
+     slt $t1, $t0, $t2
+     slti $t4, $t2, 80    #ends at the letter 'Q'
+     and $s5, $t1, $t4     #if value is  within range 65 to 81 then 1(True) is returned 
+     addi $s3, $t2, -55   #if $s5 has 1 then calculate value then branch to calculation 
