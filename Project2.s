@@ -26,8 +26,6 @@ LongInputError:
   j exit    #jump to exit program
 
 main:
-  li $v0, 8     #system call to read string 
-  la $a0, userInput       #address of input string to read 
-  li $a1, 16      #system call to close 
-  syscall
-  la $t0, userInput   #load address of user input
+  la $a0, userInput   #points to the starting address of user input
+     li $v0, 8    # loads userInput in $v0
+     syscall
