@@ -44,4 +44,8 @@ loop:
      beq $t5, $s4, loopExit
      addi $s4, $s4, 1  # update value of counter by one
      addi $a0, $a0, -1 # update value so it points to the address before the previous byte
-
+     lb $t2, 0($a0)  # getting ASCII value of char
+     beqz $t2, loop  # if value is NULL then branch to loop
+     
+     li $a1, 10    # load new line char
+     beq $a1, $t2, loop  # go to loop start if it's a new line char
