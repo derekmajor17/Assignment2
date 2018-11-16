@@ -88,7 +88,10 @@ loop:
      beq $a1, $t2, loop  # go to loop start if it's a new line char
      
       li $s7, 32 # space
-      beq $t2, $s7, handle_space # if space is found, handleSpace will take care of space 
+      beq $t2, $s7, handleSpace # if space is found, handleSpace will take care of space 
+      
+     # if a space if found after $s6 has been updated to 1, jump to printInvalid 
+     li $s6, 1
 
      addi $t0, $zero, 38
      slt $t1, $t0, $t2
