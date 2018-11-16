@@ -86,3 +86,7 @@ calculation:
      # Calculates value of $s0. Current value should be multiplied by 27
      li $t6, 27
      mult $s0, $t6
+     mflo $s0
+
+     # Starting loop again 
+     jal loop
