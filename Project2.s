@@ -93,7 +93,7 @@ loop:
      # if a space if found after $s6 has been updated to 1, jump to printInvalid 
      li $s6, 1
 
-     addi $t0, $zero, 38
+     li $t0,38
      slt $t1, $t0, $t2
      slti $t4, $t2, 58
      and $s5, $t1, $t4   # if value is in range 39 to 48, $s5 will have 1
@@ -102,7 +102,7 @@ loop:
      li $t7, 1
      beq $t7, $s5, calculation  # if $s5 already has 1, calculate the char's value from ASCII and skip other checks and branch to calculation
 
-     addi $t0, $zero, 64    #starts at the letter 'A'
+     li $t0, 64    #starts at the letter 'A'
      slt $t1, $t0, $t2
      slti $t4, $t2, 80    #ends at the letter 'Q'
      and $s5, $t1, $t4     #if value is  within range 65 to 81 then 1(True) is returned 
@@ -110,7 +110,7 @@ loop:
      
      li $t7, 1
      beq $t7, $s5, calculation  #calculates the char's value from ASCII
-     addi $t0, $zero, 96  #range starts at 'a'
+     addi $t0, 96  #range starts at 'a'
      slt $t1, $t0, $t2
      slti $t4, $t2, 114 #range goes to 'q'
      and $s5, $t1, $t4  #if value is within range 97 and 113, $s5 will have 1
