@@ -59,6 +59,9 @@ filterLoop:
      sb $t0, 1($a1)   #loads and stores second byte 
      lb $t0, 2($a0)
      sb $t0, 2($a1)   #loads and stores third byte 
+     lb $t0, 3($a0)
+     sb $t0, 3($a1)   #loads and stores fourth byte 
+     addi $a0, $a0, 3  #skips checking the 4 byte
      
 
 #Check if input is more than 4 characters long
