@@ -70,3 +70,7 @@ loop:
      addi $t0, $zero, 96  #range starts at 'a'
      slt $t1, $t0, $t2
      slti $t4, $t2, 114 #range goes to 'q'
+     and $s5, $t1, $t4  #if value is within range 97 and 113, $s5 will have 1
+     addi $s3, $t2, -87
+     li $t7, 1
+     beq $t7, $s5, calculation  #if $s5 has 1 then calculate value then branch to calculation 
