@@ -133,6 +133,10 @@ calculation:
 
      # Starting loop again 
      jal loop
+     
+     handle_space:
+     beq $zero, $s6, loop # if no non-NUL/space/newlinechar found then branch to loop 
+     jal printInvalidInput # if non-NUL/space/newlinechar was found and a space is found again then print invalid value 
     
      exit:
      li $v0, 10                                  # load code to exit the program
