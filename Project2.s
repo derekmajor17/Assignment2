@@ -55,6 +55,11 @@ filterLoop:
      la $a1, filteredInput # load address of filteredInput
      sb $t0, 0($a1)
      
+     lb $t0, 1($a0)
+     sb $t0, 1($a1)   #loads and stores second byte 
+     lb $t0, 2($a0)
+     sb $t0, 2($a1)   #loads and stores third byte 
+     
 
 #Check if input is more than 4 characters long
      lb $t0, 5($a0)  # sixth byte put into $t0, fifth byte is new line char to enter string
