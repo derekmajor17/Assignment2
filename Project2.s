@@ -36,6 +36,9 @@ main:
      li $v0, 8    # loads userInput in $v0
      syscall
 
+     #if characters making a space are found after loading four bytes then user input is more than four chars
+     li $s2, 0    #s2 becomes 1 if a character that is found
+
 #Check if input is more than 4 characters long
      lb $t0, 5($a0)  # sixth byte put into $t0, fifth byte is new line char to enter string
      bne $zero, $t0, printMoreThanFour   # if sixth byte isn't NULL then userInput has more than 4 characters
