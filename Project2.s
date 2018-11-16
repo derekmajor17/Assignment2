@@ -46,6 +46,14 @@ filterLoop:
      lb $t0, 0($a0)     # $a0 gets updated in loop
      beq $t0, $t1, exitFillerLoop     # exit when new line char found
      beq $t0, $t2, skipOver     #if space is found, skip over to check the next byte 
+     beqz $t0, exitFillerLoop # exits loop when NULL is found
+     
+     #Execution up to this point means a non-NULL, non-space or non-new-line-char has been found
+     
+     bne $s2, $zero, printMoreThanFour
+     li $s2, 1    # 1 is loaded into $s2
+     la $a1, filteredInput # load address of filteredInput
+     sb $t0, 0($a1)
      
 
 #Check if input is more than 4 characters long
