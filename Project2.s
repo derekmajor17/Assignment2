@@ -78,5 +78,11 @@ loop:
      # If $s5 is still 0, it means that $t2 has an invalid char in base-27 system
      beq $s5, $zero, printInvalidValue   #if $t2 value is invalid then jump to printInvalidValue
 
-     calculation:
+calculation:
      mult $s0, $s3                               
+     mflo $t3
+     add $s1, $s1, $t3  #add value of multiplication to value from calculation 
+     
+     # Calculates value of $s0. Current value should be multiplied by 27
+     li $t6, 27
+     mult $s0, $t6
