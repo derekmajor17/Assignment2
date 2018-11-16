@@ -74,3 +74,9 @@ loop:
      addi $s3, $t2, -87
      li $t7, 1
      beq $t7, $s5, calculation  #if $s5 has 1 then calculate value then branch to calculation 
+
+     # If $s5 is still 0, it means that $t2 has an invalid char in base-27 system
+     beq $s5, $zero, printInvalidValue   #if $t2 value is invalid then jump to printInvalidValue
+
+     calculation:
+     mult $s0, $s3                               
