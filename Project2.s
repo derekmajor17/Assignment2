@@ -37,7 +37,16 @@ main:
      syscall
 
      #if characters making a space are found after loading four bytes then user input is more than four chars
+     
      li $s2, 0    #s2 becomes 1 if a character that is found
+     li $t1, 10 # new line character 
+     li $t2, 32 # space character 
+     
+filterLoop:
+     lb $t0, 0($a0)     # $a0 gets updated in loop
+     beq $t0, $t1, exitFillerLoop     # exit when new line char found
+     beq $t0, $t2, skipOver     #if space is found, skip over to check the next byte 
+     
 
 #Check if input is more than 4 characters long
      lb $t0, 5($a0)  # sixth byte put into $t0, fifth byte is new line char to enter string
