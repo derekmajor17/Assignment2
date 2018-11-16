@@ -24,6 +24,12 @@ LongInputError:
   li $v0, 4   # address of string to printIt will point to 4th b
   syscall
   j exit    #jump to exit program
+   
+loopExit:
+  li $v0, 1     # print integer
+  add $a0, $zero, $s1   # load value calculated in loop
+  syscall
+  jal exit
 
 main:
   la $a0, userInput   #points to the starting address of user input
@@ -90,3 +96,7 @@ calculation:
 
      # Starting loop again 
      jal loop
+    
+     exit:
+     li $v0, 10                                  # load code to exit the program
+     syscall
