@@ -66,10 +66,10 @@ filterLoop:
 skipOver:
      addi $a0, $a0, 1
      jal filterLoop
-
-#Check if input is more than 4 characters long
-     lb $t0, 5($a0)  # sixth byte put into $t0, fifth byte is new line char to enter string
-     bne $zero, $t0, printMoreThanFour   # if sixth byte isn't NULL then userInput has more than 4 characters
+     
+exitFilterLoop:
+     beqz $s2, printEmpty
+     # if $s2 == 0, it means that user input is empty(or only spaces)
 
      li $s0, 1  # number to multiply 27 with 
      li $s1, 0  # sum number
